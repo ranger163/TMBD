@@ -1,4 +1,4 @@
-package me.inassar.tmbd.repository
+package me.inassar.tmbd.data.repository
 
 enum class Status {
     RUNNING, SUCCESS, FAILED
