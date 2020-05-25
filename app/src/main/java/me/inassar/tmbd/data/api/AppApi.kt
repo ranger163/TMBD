@@ -14,6 +14,6 @@ interface AppApi {
 
 object ApiCall {
     fun getClient(): AppApi {
-        return AppConfig().retrofit.create(AppApi::class.java)
+        return AppConfig.instance().retrofit.create(AppApi::class.java)
     }
 }

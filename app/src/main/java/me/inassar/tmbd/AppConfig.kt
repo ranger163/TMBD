@@ -43,4 +43,8 @@ class AppConfig : Application() {
             return@Interceptor chain.proceed(request)
         }
     }
+
+    companion object {
+        fun instance() = AppConfig()
+    }
 }
