@@ -17,31 +17,29 @@ import me.inassar.tmbd.data.model.PopularMoviesModel
 import me.inassar.tmbd.data.repository.NetworkState
 import me.inassar.tmbd.view.moviedetails.MovieDetailsActivity
 
-
-class PopularMoviePagedListAdapter(public val context: Context) :
+class PopularMoviePagedListAdapter(private val context: Context) :
     PagedListAdapter<PopularMoviesModel.Movie, RecyclerView.ViewHolder>(MovieDiffCallback()) {
 
-    val MOVIE_VIEW_TYPE = 1
-    val NETWORK_VIEW_TYPE = 2
+    val movieViewType = 1
+    private val networkViewType = 2
 
     private var networkState: NetworkState? = null
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view: View
 
-        if (viewType == MOVIE_VIEW_TYPE) {
+        return if (viewType == movieViewType) {
             view = layoutInflater.inflate(R.layout.movie_list_item, parent, false)
-            return MovieItemViewHolder(view)
+            MovieItemViewHolder(view)
         } else {
             view = layoutInflater.inflate(R.layout.network_state_item, parent, false)
-            return NetworkStateItemViewHolder(view)
+            NetworkStateItemViewHolder(view)
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == MOVIE_VIEW_TYPE) {
+        if (getItemViewType(position) == movieViewType) {
             (holder as MovieItemViewHolder).bind(getItem(position), context)
         } else {
             (holder as NetworkStateItemViewHolder).bind(networkState)
@@ -59,9 +57,9 @@ class PopularMoviePagedListAdapter(public val context: Context) :
 
     override fun getItemViewType(position: Int): Int {
         return if (hasExtraRow() && position == itemCount - 1) {
-            NETWORK_VIEW_TYPE
+            networkViewType
         } else {
-            MOVIE_VIEW_TYPE
+            movieViewType
         }
     }
 
@@ -93,7 +91,7 @@ class PopularMoviePagedListAdapter(public val context: Context) :
             val moviePosterURL = POSTER_BASE_URL + movie?.posterPath
             Glide.with(itemView.context)
                 .load(moviePosterURL)
-                .into(itemView.cv_iv_movie_poster);
+                .into(itemView.cv_iv_movie_poster)
 
             itemView.setOnClickListener {
                 val intent = Intent(context, MovieDetailsActivity::class.java)
@@ -109,19 +107,19 @@ class PopularMoviePagedListAdapter(public val context: Context) :
 
         fun bind(networkState: NetworkState?) {
             if (networkState != null && networkState == NetworkState.LOADING) {
-                itemView.progress_bar_item.visibility = View.VISIBLE;
+                itemView.progress_bar_item.visibility = View.VISIBLE
             } else {
-                itemView.progress_bar_item.visibility = View.GONE;
+                itemView.progress_bar_item.visibility = View.GONE
             }
 
             if (networkState != null && networkState == NetworkState.ERROR) {
-                itemView.error_msg_item.visibility = View.VISIBLE;
-                itemView.error_msg_item.text = networkState.message;
+                itemView.error_msg_item.visibility = View.VISIBLE
+                itemView.error_msg_item.text = networkState.message
             } else if (networkState != null && networkState == NetworkState.END_OF_LIST) {
-                itemView.error_msg_item.visibility = View.VISIBLE;
-                itemView.error_msg_item.text = networkState.message;
+                itemView.error_msg_item.visibility = View.VISIBLE
+                itemView.error_msg_item.text = networkState.message
             } else {
-                itemView.error_msg_item.visibility = View.GONE;
+                itemView.error_msg_item.visibility = View.GONE
             }
         }
     }
