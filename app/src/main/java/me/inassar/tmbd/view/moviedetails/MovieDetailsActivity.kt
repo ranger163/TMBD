@@ -1,4 +1,4 @@
-package me.inassar.tmbd.view
+package me.inassar.tmbd.view.moviedetails
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
