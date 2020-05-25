@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_movie_details.*
-import me.inassar.tmbd.Constants.POSTER_BASE_URL
 import me.inassar.tmbd.R
+import me.inassar.tmbd.configs.Constants.POSTER_BASE_URL
 import me.inassar.tmbd.data.api.ApiCall
 import me.inassar.tmbd.data.api.AppApi
 import me.inassar.tmbd.data.model.MovieDetailsModel

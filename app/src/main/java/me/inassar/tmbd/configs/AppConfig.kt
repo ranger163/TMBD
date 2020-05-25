@@ -1,4 +1,4 @@
-package me.inassar.tmbd
+package me.inassar.tmbd.configs
 
 import android.app.Application
 import okhttp3.Interceptor
@@ -34,7 +34,10 @@ class AppConfig : Application() {
             val url = chain.request()
                 .url()
                 .newBuilder()
-                .addQueryParameter(Constants.PATH_PARAM_API_KEY, Constants.THE_MOVIE_DB_API_KEY)
+                .addQueryParameter(
+                    Constants.PATH_PARAM_API_KEY,
+                    Constants.THE_MOVIE_DB_API_KEY
+                )
                 .build()
             val request = chain.request()
                 .newBuilder()

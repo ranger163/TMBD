@@ -1,8 +1,8 @@
 package me.inassar.tmbd.data.api
 
 import io.reactivex.Single
-import me.inassar.tmbd.AppConfig
-import me.inassar.tmbd.Constants
+import me.inassar.tmbd.configs.AppConfig
+import me.inassar.tmbd.configs.Constants
 import me.inassar.tmbd.data.model.MovieDetailsModel
 import retrofit2.http.GET
 import retrofit2.http.Path
