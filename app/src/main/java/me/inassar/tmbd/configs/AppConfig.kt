@@ -35,7 +35,7 @@ class AppConfig : Application() {
                 .url()
                 .newBuilder()
                 .addQueryParameter(
-                    Constants.PATH_PARAM_API_KEY,
+                    Constants.QUERY_PARAM_API_KEY,
                     Constants.THE_MOVIE_DB_API_KEY
                 )
                 .build()
