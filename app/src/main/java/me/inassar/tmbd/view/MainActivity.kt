@@ -1,7 +1,8 @@
-package me.inassar.tmbd
+package me.inassar.tmbd.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import me.inassar.tmbd.R
 
 class MainActivity : AppCompatActivity() {
 
